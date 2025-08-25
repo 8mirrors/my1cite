@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation page</title>
+  <style>
+    body {
+        background-color: darkgray;
+        transition: background-color 0.5s;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .animated-page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color:cornsilk;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease-in-out;
+        z-index: 1000;
+    }
+    .animated-box {
+        height: 100px;
+        width: 100px;
+        background-color: cornflowerblue;
+        transition: transform 0.5s;
+        opacity: 0.7;
+    }
+    .animate {
+        transform: translateX(100px) rotate(45deg);
+        opacity: 0.5;
+    }
+    .btn {
+        margin-top: 5px;
+        padding: 10px;
+        background-color: blue;
+        transition: background-color 0.3s;
+    }
+    </style>
+</head>
+<body>
+    <div class="animated-page" id="animated-page">
+    </div>
+    <h1>Страница 1</h1>
+    <div class="animated-box" id="animated-box">
+    </div>
+    <div class="btn">
+        <button id="anime-btn">Перейти</button>
+    </div>
+  <script>
+    document.getElementById("anime-btn").addEventListener("click", function() {
+        document.getElementById("animated-box").classList.add("animate");
+        const page = document.getElementById("animated-page");
+        page.style.transform = "scaleX(1)";
+        setTimeout(function() {
+            window.location.href = "page2.html";
+        }, 500);
+    });
+  </script>
+</body>
+</html>
